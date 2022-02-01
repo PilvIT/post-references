@@ -1,0 +1,18 @@
+{
+  "name": "@pilvit/post-references",
+  "version": "0.1.0",
+  "private": false,
+  "license" : "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PilvIT/post-references"
+  },
+  "dependencies": {
+    "react": "^17.0.2"
+  },
+  "scripts": {
+    "coverage": "jest --collect-coverage",
+    "lint": "eslint .",
+    "test": "jest"
+  }
+}

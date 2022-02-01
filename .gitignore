@@ -24,3 +24,7 @@ yarn-error.log*
 
 **/.idea/workspace.xml
 **/.idea/tasks.xml
+
+# build directory
+lib/
+!lib/package.json

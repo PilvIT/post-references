@@ -1,11 +1,11 @@
 import { createContext } from "react";
 
-interface Value {
+export interface CiteContextValue {
   citeIds: Record<string, string>;
   setCiteIds: (ids: Record<string, string>) => void;
 }
 
-export const CiteContext = createContext<Value>({
+export const CiteContext = createContext<CiteContextValue>({
   citeIds: {},
   setCiteIds: () => null,
 });
