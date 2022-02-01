@@ -16,26 +16,35 @@ An example of a post written in MDX
 title: Example Post
 ---
 
-const bib = {
+const refs = {
     sicp: {
         type: "book",
         title: "Structure and Interpretation of Computer Programs",
-        author: ["Harold Abelson", "Gerald Jay Sussman", "Julie Sussman"],
+        authors: ["Harold Abelson", "Gerald Jay Sussman", "Julie Sussman"],
         year: 1985,
     },
     tex: {
         type: "web",
         title: "TeX",
+        authors: ["Wikipedia"],
         link: "https://en.wikipedia.org/wiki/TeX"
     }
 }
 
 
-Lorem lipsum... <Cite data={bib.sicp} />
+Lorem lipsum... <Cite data={refs.sicp} />
 
-More text <Cite data={bib.tex} /> here...
+More text <Cite data={refs.tex} /> here...
 
 For multiple citations <Cite data={[ bib.sicp, bib.tex ]} />
 
-<Bibliography bibliography={bib} />
+<References bibliography={refs} />
 ```
+
+Remember to wrap your Post template inside `CiteContextProvider`.
+
+## Roadmap
+
+- [ ] Support IEEE citation style
+- [ ] Support APA citation style
+- [ ] Web Component version
