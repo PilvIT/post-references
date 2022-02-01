@@ -28,3 +28,4 @@ yarn-error.log*
 # build directory
 lib/
 !lib/package.json
+!lib/README.md
