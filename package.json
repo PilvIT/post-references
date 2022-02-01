@@ -1,7 +1,7 @@
 {
   "name": "@pilvit/post-references",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "license" : "MIT",
   "dependencies": {
     "react": "^17.0.2"
@@ -20,6 +20,10 @@
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.3",
     "typescript": "^4.5.5"
+  },
+  "main": "index.js",
+  "publishConfig": {
+    "include": "prod"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

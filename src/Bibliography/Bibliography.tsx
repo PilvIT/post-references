@@ -9,7 +9,7 @@ interface Props {
   locale?: Locales;
 }
 
-export const Bibliography = ({ data, locale }: Props) => {
+export const Bibliography = ({ className, data, locale }: Props) => {
   const { setCiteIds } = useCiteContext();
   const [references, setReferences] = useState<ReactNode[]>([]);
 
@@ -33,7 +33,7 @@ export const Bibliography = ({ data, locale }: Props) => {
     setReferences(components);
   }, []);
 
-  return <ul>{references}</ul>;
+  return <ul className={className || "bibliography"}>{references}</ul>;
 };
 
 const sortBibliography = (bibliography: BibliographyData) => {
