@@ -1,7 +1,8 @@
 {
-  "name": "post-references",
+  "name": "@pilvit/post-references",
   "version": "0.1.0",
   "private": false,
+  "license" : "MIT",
   "dependencies": {
     "react": "^17.0.2"
   },
@@ -21,7 +22,8 @@
     "typescript": "^4.5.5"
   },
   "scripts": {
-    "test": "jest",
-    "coverage": "jest --collect-coverage"
+    "coverage": "jest --collect-coverage",
+    "lint": "eslint .",
+    "test": "jest"
   }
 }
