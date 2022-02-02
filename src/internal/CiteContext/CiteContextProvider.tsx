@@ -1,17 +1,19 @@
 import { BibItemProps, BibliographyData, CiteFormatter } from "../../types";
 import { ComponentType, ReactNode, useState } from "react";
 import { CiteContext } from "./CiteContext";
+import { DefaultItemRenderer } from "../../renderers/DefaultItemRenderer";
+import { defaultCiteFormatter } from "../../renderers/defaultCiteFormatter";
 
 interface Props {
   children: ReactNode;
-  citeFormatter: CiteFormatter;
-  BibItemRenderer: ComponentType<BibItemProps>;
+  citeFormatter?: CiteFormatter;
+  BibItemRenderer?: ComponentType<BibItemProps>;
 }
 
 export const CiteContextProvider = ({
   children,
-  citeFormatter,
-  BibItemRenderer,
+  citeFormatter = defaultCiteFormatter,
+  BibItemRenderer = DefaultItemRenderer,
 }: Props) => {
   const [bibliography, setBibliography] = useState<BibliographyData>({});
   const [enumIds, setEnumIds] = useState<Record<string, string>>({});

@@ -10,19 +10,20 @@ npm -i @pilvit/post-references
 ## Motivation
 
 Many blog posts use links to their references, but this doesn't work with well scientific literature or books.
-Another approach is to use `<cite>` HTML built-in tag.
+Another approach is to use `<cite>` HTML built-in tag, it is good if you refer to a licensed content.
 
-In our approach you can define citation style can it renders the bibliography.
-The default style doesn't follow any and is just plain "Authors. Year. _title_."
+In our approach you can define citation style and the respective bibliography is printed and citation formatted.
+The format is inspired from BibTex.
+The numbering is automatic, and items are sorted by author names.
 
-An example of a post written in MDX
+### Example in MDX
 
 ```
 ---
 title: Example Post
 ---
 
-Lorem lipsum... <Cite id="sicp" pages={[1, 30]} />
+Lorem lipsum... <Cite id="sicp" meta="p. 20–25" />
 
 More text <Cite id="tex" /> here...
 
@@ -48,15 +49,16 @@ In static-site generators such as Gatsby and Next.js you can define a template:
 ```jsx
 import {Bibliography, Cite, CiteContextProvider} from "@pilvit/post-references";
 import {DefaultRenderer} from "@pilvit/post-references/renderers/DefaultRenderer";
+import {defaultCiteFormatter} from "@pilvit/post-references/renderers/defaultCiteFormatter";
 
 export const Template = () => {
     return (
-        <CiteContextProvider BibItemRenderer={DefaultItemRenderer}>
+        <CiteContextProvider>
             <MDXProvider components={{
                 Cite,
                 Bibliography
             }}>
-                {/* You content or MDXRenderer. */}
+                {/* MDXRenderer */}
             </MDXProvider>
         </CiteContextProvider>
     )
