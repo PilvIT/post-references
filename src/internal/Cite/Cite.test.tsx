@@ -3,11 +3,15 @@ import { Cite } from "./Cite";
 import { CiteContextProvider } from "../CiteContext/CiteContextProvider";
 import { Bibliography } from "../Bibliography/Bibliography";
 import { DefaultItemRenderer } from "../../renderers/DefaultItemRenderer";
+import { defaultCiteFormatter } from "../../renderers/defaultCiteFormatter";
 
 describe("<Cite />", () => {
   it("should render id from context", async () => {
     rtl.render(
-      <CiteContextProvider BibItemRenderer={DefaultItemRenderer}>
+      <CiteContextProvider
+        citeFormatter={defaultCiteFormatter}
+        BibItemRenderer={DefaultItemRenderer}
+      >
         <p>
           Test is described by <Cite id="tex" />.
         </p>
@@ -32,6 +36,4 @@ describe("<Cite />", () => {
     const element = rtl.screen.getByText(/Test is described by.*/);
     expect(element.textContent).toEqual("Test is described by [1].");
   });
-
-  it.todo("should render page numbers");
 });

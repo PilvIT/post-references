@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type CiteType = "article" | "book" | "web";
 
 interface CiteBase {
@@ -41,3 +43,9 @@ export interface BibItemProps {
   enumId: string;
   id: string;
 }
+
+export type CiteFormatter = (
+  enumId: string,
+  data: CiteData,
+  meta?: string
+) => ReactNode;

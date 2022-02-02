@@ -9,7 +9,7 @@ export const DefaultItemRenderer = ({ data, id, enumId }: BibItemProps) => {
     case "article":
       return (
         <li key={id} id={id}>
-          <span>{enumId}</span>
+          <span>[{enumId}]</span>
           <span>
             {authors}. {data.year}. {data.title}.{" "}
             <JournalRenderer data={data.journal} />.
@@ -28,7 +28,7 @@ export const DefaultItemRenderer = ({ data, id, enumId }: BibItemProps) => {
     case "book":
       return (
         <li key={id} id={id}>
-          <span>{enumId}</span>
+          <span>[{enumId}]</span>
           <span>
             {authors}. {data.year}. <em>{data.title}</em>. {data.publisher}.
           </span>
@@ -37,9 +37,9 @@ export const DefaultItemRenderer = ({ data, id, enumId }: BibItemProps) => {
     case "web":
       return (
         <li key={id} id={id}>
-          <span>{enumId}</span>
+          <span>[{enumId}]</span>
           <span>
-            {authors}. <em>{data.title}</em>.{" "}
+            {authors}. {data.title}.{" "}
             <a href={data.href} target="_blank" rel="noreferrer">
               {data.href}
             </a>

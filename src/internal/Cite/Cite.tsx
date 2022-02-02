@@ -3,15 +3,15 @@ import { useCiteContext } from "../CiteContext/useCiteContext";
 interface Props {
   id: string;
   className?: string;
-  pages?: number | [number, number];
+  meta?: string;
 }
 
-export const Cite = ({ className, id }: Props) => {
-  const { citeIds } = useCiteContext();
+export const Cite = ({ className, id, meta }: Props) => {
+  const { bibliography, enumIds, citeFormatter } = useCiteContext();
 
   return (
-    <a href={`#references-${id}`} className={className || "cite-link"}>
-      {citeIds[id]}
+    <a href={`#cite-${id}`} className={className || "cite-link"}>
+      {citeFormatter(enumIds[id], bibliography[id], meta)}
     </a>
   );
 };

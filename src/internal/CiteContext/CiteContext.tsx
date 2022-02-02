@@ -1,15 +1,21 @@
 import { ComponentType, createContext } from "react";
 import { DefaultItemRenderer } from "../../renderers/DefaultItemRenderer";
-import { BibItemProps } from "../../types";
+import { BibItemProps, BibliographyData, CiteFormatter } from "../../types";
 
 export interface CiteContextValue {
-  citeIds: Record<string, string>;
-  setCiteIds: (ids: Record<string, string>) => void;
+  bibliography: BibliographyData;
+  setBibliography: (data: BibliographyData) => void;
+  enumIds: Record<string, string>;
+  setEnumIds: (ids: Record<string, string>) => void;
+  citeFormatter: CiteFormatter;
   BibItemRenderer: ComponentType<BibItemProps>;
 }
 
 export const CiteContext = createContext<CiteContextValue>({
-  citeIds: {},
-  setCiteIds: () => null,
+  bibliography: {},
+  setBibliography: () => null,
+  citeFormatter: () => "",
+  enumIds: {},
+  setEnumIds: () => null,
   BibItemRenderer: DefaultItemRenderer,
 });

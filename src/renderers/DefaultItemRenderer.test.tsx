@@ -18,7 +18,7 @@ describe("<DefaultRenderer />", () => {
       doi: "https://doi.org/10.1093/comjnl/27.2.97",
     };
     const { container } = rtl.render(
-      <DefaultItemRenderer data={data} enumId="[1]" id="knuth" />
+      <DefaultItemRenderer data={data} enumId="1" id="knuth" />
     );
 
     expect(container.textContent).toEqual(
@@ -44,7 +44,7 @@ describe("<DefaultRenderer />", () => {
           year: 2022,
           href: "https://en.wikipedia.org/wiki/TeX",
         }}
-        enumId="[1]"
+        enumId="1"
         id="tex"
       />
     );
@@ -64,13 +64,17 @@ describe("<DefaultRenderer />", () => {
           year: 1985,
           publisher: "MIT Press",
         }}
-        enumId="[1]"
+        enumId="1"
         id="sicp"
       />
     );
     expect(container.textContent).toEqual(
       "[1]Harold Abelson, Gerald Jay Sussman, and Julie Sussman. 1985. Structure and Interpretation of Computer Programs. MIT Press."
     );
+    expect(
+      rtl.screen.getByText("Structure and Interpretation of Computer Programs")
+        .tagName
+    ).toEqual("EM");
   });
 
   it("should throw if type is supported", () => {
@@ -80,7 +84,7 @@ describe("<DefaultRenderer />", () => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           data={{ type: "news", authors: ["John Doe"] }}
-          enumId="[1]"
+          enumId="1"
           id="helsingin-sanomat"
         />
       );
