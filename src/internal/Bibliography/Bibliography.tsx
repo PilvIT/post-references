@@ -1,6 +1,5 @@
 import { ReactNode, useEffect, useState } from "react";
-import { BibliographyData, Locales } from "../types";
-import { BibliographyItem } from "./BibliographyItem";
+import { BibliographyData, Locales } from "../../types";
 import { useCiteContext } from "../CiteContext/useCiteContext";
 
 interface Props {
@@ -9,8 +8,8 @@ interface Props {
   locale?: Locales;
 }
 
-export const Bibliography = ({ className, data, locale }: Props) => {
-  const { setCiteIds } = useCiteContext();
+export const Bibliography = ({ className, data }: Props) => {
+  const { setCiteIds, BibItemRenderer } = useCiteContext();
   const [references, setReferences] = useState<ReactNode[]>([]);
 
   useEffect(() => {
@@ -20,12 +19,11 @@ export const Bibliography = ({ className, data, locale }: Props) => {
       const renderId = `[${i + 1}]`;
       idMap[id] = renderId;
       return (
-        <BibliographyItem
+        <BibItemRenderer
           key={id}
           id={`references-${id}`}
           data={data}
-          locale={locale}
-          renderId={renderId}
+          enumId={renderId}
         />
       );
     });

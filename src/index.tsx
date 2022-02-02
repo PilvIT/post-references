@@ -1,3 +1,3 @@
-export { Bibliography } from "./Bibliography/Bibliography";
-export { Cite } from "./Cite/Cite";
-export { CiteContextProvider } from "./CiteContext/CiteContextProvider";
+export { Bibliography } from "./internal/Bibliography/Bibliography";
+export { Cite } from "./internal/Cite/Cite";
+export { CiteContextProvider } from "./internal/CiteContext/CiteContextProvider";

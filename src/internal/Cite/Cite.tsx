@@ -3,6 +3,7 @@ import { useCiteContext } from "../CiteContext/useCiteContext";
 interface Props {
   id: string;
   className?: string;
+  pages?: number | [number, number];
 }
 
 export const Cite = ({ className, id }: Props) => {

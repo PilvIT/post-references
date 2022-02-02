@@ -2,7 +2,6 @@
 
 This is a package of React components to create citations for your blog posts.
 It works best with MDX and static site generators.
-The runtime processing will be eliminated.
 
 ```
 npm -i @pilvit/post-references
@@ -23,7 +22,11 @@ An example of a post written in MDX
 title: Example Post
 ---
 
-export const refs = {
+Lorem lipsum... <Cite id="sicp" pages={[1, 30]} />
+
+More text <Cite id="tex" /> here...
+
+<Bibliography data={{
     sicp: {
         type: "book",
         title: "Structure and Interpretation of Computer Programs",
@@ -37,23 +40,18 @@ export const refs = {
         authors: ["Wikipedia"],
         link: "https://en.wikipedia.org/wiki/TeX"
     }
-}
-
-Lorem lipsum... <Cite id="sicp" />
-
-More text <Cite id="tex" /> here...
-
-<Bibliography data={refs} />
+}}/>
 ```
 
 In static-site generators such as Gatsby and Next.js you can define a template:
 
 ```jsx
-import { Bibliography, Cite, CiteContextProvider } from "@pilvit/post-references";
+import {Bibliography, Cite, CiteContextProvider} from "@pilvit/post-references";
+import {DefaultRenderer} from "@pilvit/post-references/renderers/DefaultRenderer";
 
 export const Template = () => {
     return (
-        <CiteContextProvider locale="en">
+        <CiteContextProvider locale="en" BibItemRenderer={DefaultRenderer}>
             <MDXProvider components={{
                 Cite,
                 Bibliography
@@ -65,12 +63,71 @@ export const Template = () => {
 }
 ```
 
-By default, it adds the `cite-link` class to `Cite` component and `bibliography to `Bibliography for custom styles.
+By default, it adds the `cite-link` class to `Cite` component and `bibliography` to `Bibliography` for custom styles.
 You can also create a _higher-order-component_ to supply your custom class.
 
-## Roadmap
+## Writing bibliography
 
-- [ ] Support IEEE citation style
-- [ ] Support APA citation style
-- [ ] Support custom formats
-- [ ] Web Component version
+### Article
+
+There are many kind of scientific articles such as _conference_ and _journal_ articles.
+
+```json5
+{
+    type: "article",
+    title: "Literate Programming",
+    authors: ["Donald E. Knuth"],
+    year: 1984,
+    journal: {
+        name: "The Computer Journal",
+        issue: 2,
+        volume: 27,
+        pages: [97, 111],
+    },
+    doi: "https://doi.org/10.1093/comjnl/27.2.97",
+}
+```
+
+### Book
+
+```json5
+{
+    type: "book",
+    title: "Structure and Interpretation of Computer Programs",
+    authors: [
+        "Harold Abelson",
+        "Gerald Jay Sussman",
+        "Julie Sussman"
+    ],
+    year: 1985,
+    publisher: "MIT Press"
+}
+```
+
+### Websites
+
+```json5
+{
+    type: "web",
+    title: "TeX",
+    authors: ["Wikipedia"],
+    link: "https://en.wikipedia.org/wiki/TeX"
+}
+```
+
+
+## Citation Styles
+
+There exists many academic citation styles such as [IEEE](https://ieeeauthorcenter.ieee.org/wp-content/uploads/IEEE-Reference-Guide.pdf).
+Different disciplines use different ones.
+
+### Default
+
+The default style doesn't expect a scientific convention to be used,
+so a plain variation of [ACM](https://www.acm.org/publications/authors/reference-formatting) is used.
+
+| Type    | Bibliography                                                                                                    | Citation   |
+|---------|-----------------------------------------------------------------------------------------------------------------|------------|
+| Article | [1] John Doe. 2021. The Example Article. _The Journal_, Volume 1, Issue 3, Pages 1–10. DOI: https://doi.org/... | [1]        |
+| Book    | [2] Jane Doe. 2022. _Example Book_. Publisher.                                                                  | [2, p. 20] |
+| Web     | [3] Wikipedia. Node.js. https://en.wikipedia.org/wiki/John_Doe.                                                 | [3]        |

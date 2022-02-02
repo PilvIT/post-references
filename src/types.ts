@@ -1,4 +1,4 @@
-export type CiteType = "book" | "web";
+export type CiteType = "article" | "book" | "web";
 export type Locales = "en" | "fi";
 
 interface CiteBase {
@@ -8,16 +8,37 @@ interface CiteBase {
   year: number;
 }
 
-interface BookCite extends CiteBase {
+export interface Journal {
+  name: string;
+  volume: number;
+  issue: number;
+  article?: number;
+  pages?: [number, number];
+}
+
+export interface ArticleCite extends CiteBase {
+  type: "article";
+  href?: `http${string}`;
+  journal: Journal;
+  doi: `https://doi.org/${string}`;
+}
+
+export interface BookCite extends CiteBase {
   type: "book";
   publisher: string;
 }
 
-interface WebCite extends CiteBase {
+export interface WebCite extends CiteBase {
   type: "web";
   href: `http${string}`;
 }
 
-export type CiteData = BookCite | WebCite;
+export type CiteData = ArticleCite | BookCite | WebCite;
 
 export type BibliographyData = Record<string, CiteData>;
+
+export interface BibItemProps {
+  data: CiteData;
+  enumId: string;
+  id: string;
+}

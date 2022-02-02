@@ -1,4 +1,4 @@
-import { Locales } from "../types";
+import { Locales } from "../../types";
 
 export const formatAuthors = (authors: string[], locale?: Locales): string => {
   if (authors.length > 1) {
