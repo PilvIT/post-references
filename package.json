@@ -22,10 +22,6 @@
     "ts-jest": "^27.1.3",
     "typescript": "^4.5.5"
   },
-  "main": "index.js",
-  "publishConfig": {
-    "include": "prod"
-  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "coverage": "jest --collect-coverage",

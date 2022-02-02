@@ -23,7 +23,7 @@ An example of a post written in MDX
 title: Example Post
 ---
 
-const refs = {
+export const refs = {
     sicp: {
         type: "book",
         title: "Structure and Interpretation of Computer Programs",
