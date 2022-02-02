@@ -2,7 +2,7 @@ import { BibItemProps, Journal } from "../types";
 import { formatAuthors } from "../internal/Bibliography/formatAuthors";
 import { renderPageNumbers } from "../internal/renderPageNumbers";
 
-export const DefaultRenderer = ({ data, id, enumId }: BibItemProps) => {
+export const DefaultItemRenderer = ({ data, id, enumId }: BibItemProps) => {
   const authors: string = formatAuthors(data.authors);
 
   switch (data.type) {

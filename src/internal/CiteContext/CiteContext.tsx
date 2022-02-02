@@ -1,5 +1,5 @@
 import { ComponentType, createContext } from "react";
-import { DefaultRenderer } from "../../renderers/DefaultRenderer";
+import { DefaultItemRenderer } from "../../renderers/DefaultItemRenderer";
 import { BibItemProps } from "../../types";
 
 export interface CiteContextValue {
@@ -11,5 +11,5 @@ export interface CiteContextValue {
 export const CiteContext = createContext<CiteContextValue>({
   citeIds: {},
   setCiteIds: () => null,
-  BibItemRenderer: DefaultRenderer,
+  BibItemRenderer: DefaultItemRenderer,
 });

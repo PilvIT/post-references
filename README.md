@@ -51,7 +51,7 @@ import {DefaultRenderer} from "@pilvit/post-references/renderers/DefaultRenderer
 
 export const Template = () => {
     return (
-        <CiteContextProvider locale="en" BibItemRenderer={DefaultRenderer}>
+        <CiteContextProvider BibItemRenderer={DefaultItemRenderer}>
             <MDXProvider components={{
                 Cite,
                 Bibliography
@@ -131,3 +131,7 @@ so a plain variation of [ACM](https://www.acm.org/publications/authors/reference
 | Article | [1] John Doe. 2021. The Example Article. _The Journal_, Volume 1, Issue 3, Pages 1–10. DOI: https://doi.org/... | [1]        |
 | Book    | [2] Jane Doe. 2022. _Example Book_. Publisher.                                                                  | [2, p. 20] |
 | Web     | [3] Wikipedia. Node.js. https://en.wikipedia.org/wiki/John_Doe.                                                 | [3]        |
+
+### Custom
+
+You can choose any style to render by passing the renderers to `<CiteContextProvider BibItemRenderer={ACMItemRenderer}/>`.

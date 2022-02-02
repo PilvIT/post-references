@@ -1,5 +1,4 @@
 export type CiteType = "article" | "book" | "web";
-export type Locales = "en" | "fi";
 
 interface CiteBase {
   type: CiteType;

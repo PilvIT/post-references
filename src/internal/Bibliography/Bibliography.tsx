@@ -1,11 +1,10 @@
 import { ReactNode, useEffect, useState } from "react";
-import { BibliographyData, Locales } from "../../types";
+import { BibliographyData } from "../../types";
 import { useCiteContext } from "../CiteContext/useCiteContext";
 
 interface Props {
   className?: string;
   data: BibliographyData;
-  locale?: Locales;
 }
 
 export const Bibliography = ({ className, data }: Props) => {
